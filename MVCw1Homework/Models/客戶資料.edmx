@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="客戶資料Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="客戶資料Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="sysdiagrams">
           <Key>
             <PropertyRef Name="diagram_id" />
@@ -55,13 +55,16 @@
           <Property Name="是否刪除" Type="bit" Nullable="false" />
         </EntityType>
         <!--產生期間發現錯誤:
-警告 6013: 資料表/檢視 'H:\STYDY_RESOURSE\MVC_WILL\MVC5_W1HOMEWORK\MVCW1HOMEWORK\APP_DATA\客戶資料.MDF.dbo.View_客戶資料統計' 未定義主索引鍵，也無法推斷有效的主索引鍵。此資料表/檢視已被排除。如果要使用此實體，您必須檢閱您的結構描述，加入正確的索引鍵，並將它取消註解。
+警告 6002: 資料表/檢視 'H:\STYDY_RESOURSE\MVC_WILL\MVC5_W1HOMEWORK\MVCW1HOMEWORK\APP_DATA\客戶資料.MDF.dbo.View_客戶資料統計' 未定義主索引鍵。已推斷此索引鍵，並將定義建立成唯讀的資料表/檢視。-->
         <EntityType Name="View_客戶資料統計">
-          <Property Name="Id" Type="int" />
+          <Key>
+            <PropertyRef Name="客戶Id" />
+          </Key>
+          <Property Name="客戶Id" Type="int" Nullable="false" />
           <Property Name="客戶名稱" Type="nvarchar" MaxLength="50" />
           <Property Name="聯絡人數量" Type="int" />
           <Property Name="銀行帳戶數量" Type="int" />
-        </EntityType>-->
+        </EntityType>
         <Association Name="FK_客戶銀行資訊_客戶資料">
           <End Role="客戶資料" Type="Self.客戶資料" Multiplicity="1" />
           <End Role="客戶銀行資訊" Type="Self.客戶銀行資訊" Multiplicity="*" />
@@ -91,6 +94,14 @@
           <EntitySet Name="客戶資料" EntityType="Self.客戶資料" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="客戶銀行資訊" EntityType="Self.客戶銀行資訊" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="客戶聯絡人" EntityType="Self.客戶聯絡人" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="View_客戶資料統計" EntityType="Self.View_客戶資料統計" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [View_客戶資料統計].[客戶Id] AS [客戶Id], 
+    [View_客戶資料統計].[客戶名稱] AS [客戶名稱], 
+    [View_客戶資料統計].[聯絡人數量] AS [聯絡人數量], 
+    [View_客戶資料統計].[銀行帳戶數量] AS [銀行帳戶數量]
+    FROM [dbo].[View_客戶資料統計] AS [View_客戶資料統計]</DefiningQuery>
+          </EntitySet>
           <AssociationSet Name="FK_客戶銀行資訊_客戶資料" Association="Self.FK_客戶銀行資訊_客戶資料">
             <End Role="客戶資料" EntitySet="客戶資料" />
             <End Role="客戶銀行資訊" EntitySet="客戶銀行資訊" />
@@ -100,8 +111,7 @@
             <End Role="客戶聯絡人" EntitySet="客戶聯絡人" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="客戶資料Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -195,7 +205,17 @@
             <End Role="客戶資料" EntitySet="客戶資料" />
             <End Role="客戶聯絡人" EntitySet="客戶聯絡人" />
           </AssociationSet>
+          <EntitySet Name="View_客戶資料統計" EntityType="客戶資料Model.View_客戶資料統計" />
         </EntityContainer>
+        <EntityType Name="View_客戶資料統計">
+          <Key>
+            <PropertyRef Name="客戶Id" />
+          </Key>
+          <Property Name="客戶Id" Type="Int32" Nullable="false" />
+          <Property Name="客戶名稱" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="聯絡人數量" Type="Int32" />
+          <Property Name="銀行帳戶數量" Type="Int32" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -252,6 +272,16 @@
                 <ScalarProperty Name="手機" ColumnName="手機" />
                 <ScalarProperty Name="電話" ColumnName="電話" />
                 <ScalarProperty Name="是否刪除" ColumnName="是否刪除" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View_客戶資料統計">
+            <EntityTypeMapping TypeName="客戶資料Model.View_客戶資料統計">
+              <MappingFragment StoreEntitySet="View_客戶資料統計">
+                <ScalarProperty Name="銀行帳戶數量" ColumnName="銀行帳戶數量" />
+                <ScalarProperty Name="聯絡人數量" ColumnName="聯絡人數量" />
+                <ScalarProperty Name="客戶名稱" ColumnName="客戶名稱" />
+                <ScalarProperty Name="客戶Id" ColumnName="客戶Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
