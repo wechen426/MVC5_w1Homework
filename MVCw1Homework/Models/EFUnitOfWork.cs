@@ -8,7 +8,7 @@ namespace MVCw1Homework.Models
 
 		public EFUnitOfWork()
 		{
-			Context = new 客戶資料Entities();
+			Context = new 客戶資料Entities1();
 		}
 
 		public void Commit()

@@ -201,6 +201,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\客戶聯絡人Controller.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -230,7 +231,7 @@
       <DependentUpon>IRepository.EF6..tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sysdiagrams.cs">
-      <DependentUpon>客戶資料Model.tt</DependentUpon>
+      <DependentUpon>客戶資料.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sysdiagrams.Partial.cs">
       <DependentUpon>EFGeneratePartialClass.tt</DependentUpon>
@@ -239,7 +240,7 @@
       <DependentUpon>IRepository.EF6..tt</DependentUpon>
     </Compile>
     <Compile Include="Models\客戶聯絡人.cs">
-      <DependentUpon>客戶資料Model.tt</DependentUpon>
+      <DependentUpon>客戶資料.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\客戶聯絡人.Partial.cs">
       <DependentUpon>EFGeneratePartialClass.tt</DependentUpon>
@@ -247,32 +248,32 @@
     <Compile Include="Models\客戶聯絡人Repository.cs">
       <DependentUpon>IRepository.EF6..tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\客戶資料.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>客戶資料.Context.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\客戶資料.cs">
-      <DependentUpon>客戶資料Model.tt</DependentUpon>
+      <DependentUpon>客戶資料.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\客戶資料.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>客戶資料.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\客戶資料.Partial.cs">
       <DependentUpon>EFGeneratePartialClass.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\客戶資料Model.Context.cs">
+    <Compile Include="Models\客戶資料1.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>客戶資料Model.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\客戶資料Model.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>客戶資料Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\客戶資料Model.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>客戶資料Model.edmx</DependentUpon>
+      <DependentUpon>客戶資料.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\客戶資料Repository.cs">
       <DependentUpon>IRepository.EF6..tt</DependentUpon>
     </Compile>
     <Compile Include="Models\客戶銀行資訊.cs">
-      <DependentUpon>客戶資料Model.tt</DependentUpon>
+      <DependentUpon>客戶資料.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\客戶銀行資訊.Partial.cs">
       <DependentUpon>EFGeneratePartialClass.tt</DependentUpon>
@@ -300,25 +301,8 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>IRepository.EF6..cs</LastGenOutput>
     </Content>
-    <Content Include="Models\客戶資料Model.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>客戶資料Model.edmx</DependentUpon>
-      <LastGenOutput>客戶資料Model.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\客戶資料Model.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>客戶資料Model.edmx</DependentUpon>
-      <LastGenOutput>客戶資料Model.cs</LastGenOutput>
-    </Content>
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <EntityDeploy Include="Models\客戶資料Model.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>客戶資料Model.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\客戶資料Model.edmx.diagram">
-      <DependentUpon>客戶資料Model.edmx</DependentUpon>
     </Content>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -328,7 +312,24 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <EntityDeploy Include="Models\客戶資料.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>客戶資料.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\客戶資料.edmx.diagram">
+      <DependentUpon>客戶資料.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
+    <Content Include="Models\客戶資料.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>客戶資料.edmx</DependentUpon>
+      <LastGenOutput>客戶資料.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\客戶資料.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>客戶資料.edmx</DependentUpon>
+      <LastGenOutput>客戶資料1.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-3.1.1.js" />
@@ -380,6 +381,11 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\客戶聯絡人\Create.cshtml" />
+    <Content Include="Views\客戶聯絡人\Delete.cshtml" />
+    <Content Include="Views\客戶聯絡人\Details.cshtml" />
+    <Content Include="Views\客戶聯絡人\Edit.cshtml" />
+    <Content Include="Views\客戶聯絡人\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
