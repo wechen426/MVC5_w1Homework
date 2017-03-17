@@ -27,6 +27,8 @@ namespace MVCw1Homework.Models
         
         [StringLength(250, ErrorMessage="欄位長度不得大於 250 個字元")]
         [Required]
+        [emailCheckAttribue]
+
         public string Email { get; set; }
 
         [Required]

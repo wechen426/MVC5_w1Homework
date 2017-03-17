@@ -5,11 +5,16 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>客戶銀行資訊</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+
+<form>
+    @Html.Label("search 客戶名稱 keyword") @Html.TextBox("keyword")
+    <input type="submit" value="search" />
+</form>
 <table class="table">
     <tr>
         <th>
@@ -27,9 +32,9 @@
         <th>
             @Html.DisplayNameFor(model => model.帳戶號碼)
         </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.是否刪除)
-        </th>
+        </th>*@
         <th>
             @Html.DisplayNameFor(model => model.客戶資料.客戶名稱)
         </th>
@@ -53,9 +58,9 @@
         <td>
             @Html.DisplayFor(modelItem => item.帳戶號碼)
         </td>
-        <td>
+        @*<td>
             @Html.DisplayFor(modelItem => item.是否刪除)
-        </td>
+        </td>*@
         <td>
             @Html.DisplayFor(modelItem => item.客戶資料.客戶名稱)
         </td>

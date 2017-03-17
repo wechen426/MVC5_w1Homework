@@ -27,6 +27,7 @@ namespace MVCw1Homework.Models
             //this.UnitOfWork.Context.Configuration.ValidateOnSaveEnabled = false;
             entity.是否刪除 = true;
         }
+
     }
 
 	public  interface I客戶聯絡人Repository : IRepository<客戶聯絡人>

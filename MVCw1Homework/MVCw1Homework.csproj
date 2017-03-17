@@ -248,6 +248,7 @@
     <Compile Include="Models\sysdiagramsRepository.cs">
       <DependentUpon>IRepository.EF6..tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Vailedation\emailCheckAttribue.cs" />
     <Compile Include="Models\Vailedation\手機號碼驗證Attribue.cs" />
     <Compile Include="Models\View_客戶資料統計.cs">
       <DependentUpon>客戶資料.tt</DependentUpon>
