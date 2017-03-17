@@ -3,7 +3,8 @@ namespace MVCw1Homework.Models
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
-    
+    using Vailedation;
+
     [MetadataType(typeof(客戶聯絡人MetaData))]
     public partial class 客戶聯絡人
     {
@@ -27,8 +28,10 @@ namespace MVCw1Homework.Models
         [StringLength(250, ErrorMessage="欄位長度不得大於 250 個字元")]
         [Required]
         public string Email { get; set; }
-        
+
+        [Required]
         [StringLength(50, ErrorMessage="欄位長度不得大於 50 個字元")]
+        [手機號碼驗證Attribue]
         public string 手機 { get; set; }
         
         [StringLength(50, ErrorMessage="欄位長度不得大於 50 個字元")]

@@ -54,7 +54,9 @@
             @Html.LabelFor(model => model.手機, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.手機, new { htmlAttributes = new { @class = "form-control" } })
+                <span>手機號碼格式：09XX-XXXXXX</span><br />
                 @Html.ValidationMessageFor(model => model.手機, "", new { @class = "text-danger" })
+                
             </div>
         </div>
 
